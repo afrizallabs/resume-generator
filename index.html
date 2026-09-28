@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f5f5">
+    <meta name="description" content="Susun resume profesional dengan editor bertahap, pratinjau langsung, dan ekspor PDF.">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="#" aria-label="Resume Builder, beranda">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 20 20" focusable="false">
+            <path d="M5 2.75h6.2L15.5 7v10.25H5z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/>
+            <path d="M11 3v4.5h4.25M7.5 10h5.5M7.5 13h5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+          </svg>
+        </span>
+        <span>Resume<span class="brand-light"> Builder</span></span>
+      </a>
+      <div class="header-center">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Semua perubahan tersimpan di sesi ini</span>
+      </div>
+      <button class="button button-dark header-export" type="button" data-action="print">
+        <span aria-hidden="true">↓</span>
+        Ekspor PDF
+      </button>
+    </header>
+
+    <main class="workspace">
+      <section class="editor-panel" aria-label="Editor resume">
+        <div class="editor-heading">
+          <div>
+            <p class="eyebrow">RUANG KERJA</p>
+            <h1>Buat resume yang bercerita.</h1>
+            <p class="muted">Isi bagian-bagian berikut. Resume-mu akan tersusun otomatis.</p>
+          </div>
+          <span class="draft-chip"><span aria-hidden="true">✳</span> Draft baru</span>
+        </div>
+
+        <nav class="stepper" aria-label="Tahapan pembuatan resume">
+          <ol id="step-list"></ol>
+        </nav>
+
+        <div class="editor-content" id="editor-content"></div>
+      </section>
+
+      <aside class="preview-panel" aria-label="Pratinjau resume">
+        <div class="preview-heading">
+          <div>
+            <p class="eyebrow">PRATINJAU LANGSUNG</p>
+            <h2>Resume kamu</h2>
+          </div>
+          <span class="paper-size">A4 · 210 × 297 mm</span>
+        </div>
+
+        <div class="preview-toolbar" aria-label="Pengaturan tampilan resume">
+          <label class="toolbar-control">
+            <span>Font</span>
+            <select data-appearance="fontFamily" aria-label="Jenis font">
+              <option value="Arial">Arial</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Verdana">Verdana</option>
+            </select>
+          </label>
+          <label class="toolbar-control">
+            <span>Ukuran</span>
+            <select data-appearance="fontSize" aria-label="Ukuran teks">
+              <option value="small">Kecil</option>
+              <option value="medium">Sedang</option>
+              <option value="large">Besar</option>
+            </select>
+          </label>
+          <label class="toolbar-control toolbar-number">
+            <span>Jarak baris</span>
+            <span class="number-wrap"><input data-appearance="lineHeight" type="number" min="12" max="24" step="1" aria-label="Jarak baris dalam piksel"><span>px</span></span>
+          </label>
+          <label class="toolbar-control toolbar-color">
+            <span>Warna aksen</span>
+            <input data-appearance="accentColor" type="color" aria-label="Warna aksen resume">
+          </label>
+          <label class="toolbar-control toolbar-alignment">
+            <span>Rata teks</span>
+            <select data-appearance="alignment" aria-label="Perataan teks">
+              <option value="left">Kiri</option>
+              <option value="center">Tengah</option>
+              <option value="right">Kanan</option>
+              <option value="justify">Rata kiri-kanan</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="preview-stage" id="preview-stage">
+          <div class="paper-shell" id="paper-shell">
+            <article class="resume-paper" id="resume-paper" aria-label="Dokumen resume A4"></article>
+          </div>
+        </div>
+        <div class="preview-footer">
+          <span><span class="live-indicator" aria-hidden="true"></span> Pratinjau diperbarui otomatis</span>
+          <button class="text-button" type="button" data-action="print">Unduh PDF <span aria-hidden="true">↗</span></button>
+        </div>
+      </aside>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
